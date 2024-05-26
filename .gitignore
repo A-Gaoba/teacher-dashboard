@@ -1,0 +1,11 @@
+# Node.js dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Build output
+/dist
+/build
+
+# Tailwind CSS output
+/public/css
