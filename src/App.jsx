@@ -1,17 +1,11 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import Dashboard from "./components/Dashboard";
-import Profile from "./components/Profile";
-import Courses from "./components/Courses";
-import Questions from "./components/Questions";
-import Students from "./components/Students";
-import Reports from "./components/Reports";
-import Settings from "./components/Settings";
-import ParentComponent from "./components/ParentComponent";
-import CourseDetail from "./components/CourseDetail";
-import './index.css'; // Make sure Tailwind CSS is included
+import Header from "./components/common/Header";
+import Sidebar from "./components/common/Sidebar";
+import GradeList from "./components/grades/GradeList";
+import CreateGrade from "./components/grades/CreateGrade";
+import GradeDetails from "./components/grades/GradeDetails";
+import EditGrade from "./components/grades/EditGrade";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -28,14 +22,10 @@ function App() {
           <Header openSidebar={openSidebar} />
           <div className="p-4 flex-1 overflow-y-auto">
             <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/profile" element={<Profile teacherId={13} />} />
-              <Route path="/courses" element={<Courses />} />
-              <Route path="/courses/:id" element={<CourseDetail />} />
-              <Route path="/questions" element={<ParentComponent />} />
-              <Route path="/students" element={<Students />} />
-              <Route path="/reports" element={<Reports />} />
-              <Route path="/settings" element={<Settings />} />
+              <Route exact path="/grades" component={GradeList} />
+              <Route path="/grades/create" component={CreateGrade} />
+              <Route path="/grades/:id" component={GradeDetails} />
+              <Route path="/grades/:id/edit" component={EditGrade} />
             </Routes>
           </div>
         </div>
